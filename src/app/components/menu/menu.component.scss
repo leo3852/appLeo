@@ -1,0 +1,13 @@
+.ocultaMenuFondo{
+  transform: translateY(-100px);
+}
+.apareceMenu {
+  transform: translateX(300px) translateY(-300px) rotate(145deg);
+}
+.apareceX1{
+  transform: rotate(45deg) translateX(11px) translateY(1px);
+  font-size: 18px;
+}
+.apareceX2{
+  transform: rotate(-45deg) translateX(-6px) translateY(-10px);
+}
