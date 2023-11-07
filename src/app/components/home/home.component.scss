@@ -49,6 +49,13 @@
     filter: blur(20px);
 }
 
+
+@media (max-width: 1024px) {
+    .loader2, .loader {
+      width: 150px;
+    }
+}
+
 @keyframes animate {
     0%{
         background-position: 0 0;
