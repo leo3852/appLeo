@@ -1,7 +1,7 @@
-<nav class="lg:hidden bg-neutral-800 text-white p-4 transition-all duration-700 ease-in-out" [class.ocultaMenuFondo]="!isOpen">
+<nav class="lg:hidden bg-neutral-800 text-white p-4 transition-all duration-700 ease-in-out" [class.ocultaMenuFondo]="!isOpen" [class]="isOpen ? 'pt-10' : ''">
   <div class="container mx-auto">
     <div class="flex justify-between items-center">
-      <h2>Development</h2>
+      <h2></h2>
       <div class="overflow-hidden">
         <ul class="lg:hidden transition-transform duration-700 ease-in-out font-bold" [class.apareceMenu]="!isOpen" >
           <li><a href="#" class="hover:text-gray-300">Inicio</a></li>
@@ -10,9 +10,9 @@
           <li><a href="#" class="hover:text-gray-300">Contacto</a></li>
         </ul>
         <button class="float-right lg:hidden text-white mb-5 hover:text-yellow-400 focus:outline-none" (click)="toggleMenu()">
-          <p class="transition-all duration-300 leading-none h-1.5 font-bold" [class.apareceX1]="isOpen">__</p>
-          <p class="transition-all duration-300 leading-none h-1.5 font-bold" [class.opacity-0]="isOpen">__</p>
-          <p class="transition-all duration-300 leading-none h-1.5 font-bold" [class.apareceX2]="isOpen">__</p>
+          <p class="transition-all duration-300 leading-none h-1.5 font-bold text-lg" [class.apareceX1]="isOpen">__</p>
+          <p class="transition-all duration-300 leading-none h-1.5 font-bold text-lg" [class.opacity-0]="isOpen">__</p>
+          <p class="transition-all duration-300 leading-none h-1.5 font-bold text-lg" [class.apareceX2]="isOpen">__</p>
         </button>
       </div>
     </div>
