@@ -4,10 +4,10 @@
     <h2></h2>
       <div class="overflow-hidden pb-5">
         <ul class="lg:hidden transition-transform duration-700 ease-in-out font-bold" [class.apareceMenu]="!isOpen" >
-          <li><a href="#" class="hover:text-gray-300">About Me</a></li>
-          <li><a href="#" class="hover:text-gray-300">Career</a></li>
-          <li><a href="#" class="hover:text-gray-300">Skills</a></li>
-          <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+          <li class="hover:text-gray-300">About Me</li>
+          <li (click)="scrollToSectionCareer()" class="hover:text-gray-300">Career</li>
+          <li class="hover:text-gray-300">Skills</li>
+          <li class="hover:text-gray-300">Contact</li>
         </ul>
         <button class="float-right lg:hidden text-white hover:text-yellow-400 focus:outline-none" (click)="toggleMenu()">
           <p class="transition-all duration-300 leading-none h-1.5 font-bold text-lg" [class.apareceX1]="isOpen">__</p>
