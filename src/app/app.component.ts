@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  constructor(private el: ElementRef) {}
   title = 'appLeo';
+
+  scrollToSectionCareer() {
+    const sectionCareer = this.el.nativeElement.querySelector('#sectionCareer');
+    sectionCareer.scrollIntoView({ behavior: 'smooth' });
+  }
 }

@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import '~@fortawesome/fontawesome-free/css/all.css';
 
 @font-face {
     font-family: 'Montserrat-Bold'; 
@@ -26,10 +27,36 @@
 body{
     color: #d1d1d1;
     background: #1d1d20;
-    font-family: 'Montserrat-Regular';
+    /* font-family: 'Montserrat-Regular'; */
+    font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
 }
 
 h1 {
-    font-family: 'Montserrat-Regular', sans-serif;
+    /* font-family: 'Montserrat-Regular', sans-serif; */
+    font-family: 'Quicksand', sans-serif;
     font-size: 50px;
 }
+
+p{
+    padding-bottom: 10px;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-elevated-container-color: rgb(15, 59, 92);
+    --mdc-chip-elevated-disabled-container-color: rgb(94 234 212);
+    --mdc-chip-label-text-color: rgb(94 234 212);
+    --mdc-chip-disabled-label-text-color: #212121;
+    --mdc-chip-with-icon-icon-color: #212121;
+    --mdc-chip-with-icon-disabled-icon-color: #212121;
+    --mdc-chip-with-trailing-icon-disabled-trailing-icon-color: #212121;
+    --mdc-chip-with-trailing-icon-trailing-icon-color: #212121;
+    --mdc-chip-with-icon-selected-icon-color: #212121;
+}
+
+.mat-mdc-standard-chip:hover {
+    --mdc-chip-elevated-container-color: rgb(21, 49, 71);
+    --mdc-chip-elevated-disabled-container-color: rgb(64, 163, 148);
+
+}
+  
