@@ -15,6 +15,7 @@ export class MenuComponent{
 
   
   scrollToSectionCareer() {
+    this.isOpen = false;
     this.goDownCareer.emit();
   }
 }
