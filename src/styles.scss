@@ -26,7 +26,8 @@
 
 body{
     color: #d1d1d1;
-    background: #18181f;
+    /* background: #18181f; */
+    background: linear-gradient(340deg, rgba(2,2,7,1) 0%, rgba(7,20,44,1) 45%, rgba(0,47,57,1) 83%, rgb(0, 29, 35) 100%);
     /* font-family: 'Montserrat-Regular'; */
     font-family: 'Quicksand', sans-serif;
     scroll-behavior: smooth;
