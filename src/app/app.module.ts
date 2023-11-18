@@ -7,13 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { SectionCareerComponent } from './components/section-career/section-career.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
+import { SectionContactComponent } from './components/section-contact/section-contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     HomeComponent,
-    SectionCareerComponent
+    SectionCareerComponent,
+    SectionContactComponent
   ],
   imports: [
     BrowserModule,
