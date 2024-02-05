@@ -8,7 +8,7 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
   animations: [
     trigger('slideFromRight', [
       state('void', style({ transform: 'translateX(500px)' })), 
-      transition(':enter', [animate('400ms', style({ transform: 'translateX(0)' }))]), // Transición de entrada
+      transition(':enter', [animate('600ms', style({ transform: 'translateX(0)' }))]), // Transición de entrada
     ]),
     trigger('slideFromLeft', [
       state('void', style({ transform: 'translateX(-500px)' })), 
