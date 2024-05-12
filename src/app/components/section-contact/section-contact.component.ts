@@ -7,8 +7,8 @@ import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
   styleUrls: ['./section-contact.component.scss'],
   animations: [
     trigger('slideFromRight', [
-      state('void', style({ transform: 'translateX(500px)' })), 
-      transition(':enter', [animate('600ms', style({ transform: 'translateX(0)' }))]), // Transición de entrada
+      state('void', style({ transform: 'translateX(1200px)' })), 
+      transition(':enter', [animate('700ms', style({ transform: 'translateX(0)' }))]), // Transición de entrada
     ]),
     trigger('slideFromLeft', [
       state('void', style({ transform: 'translateX(-500px)' })), 

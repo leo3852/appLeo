@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import { SectionCareerComponent } from './components/section-career/section-care
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { SectionContactComponent } from './components/section-contact/section-contact.component';
+import { SectionAiComponent } from './components/section-ai/section-ai.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { SectionContactComponent } from './components/section-contact/section-co
     MenuComponent,
     HomeComponent,
     SectionCareerComponent,
-    SectionContactComponent
+    SectionContactComponent,
+    SectionAiComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatChipsModule
+    MatChipsModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

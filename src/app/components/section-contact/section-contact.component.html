@@ -1,12 +1,18 @@
-<section  class="h-screen flex max-sm:pl-20 sm:justify-center items-center overflow-x-hidden" id="sectionContact">
+<section  class="backgroundLeo bg-slate-50 h-screen flex max-sm:pl-20 sm:justify-center items-center overflow-x-hidden" id="sectionContact">
     <h3 #contactSection [@slideFromLeft]="shouldSlideDown ? 'void' : 'inactive'" class="hidden sm:block text-2xl lg:text-6xl mr-3">Contact</h3>
     <div [@slideFromRight]="shouldSlideDown ? 'void' : 'inactive'">
         <h3 #contactSection [@slideFromLeft]="shouldSlideDown ? 'void' : 'inactive'" class="block sm:hidden sm:pl-20 text-2xl lg:text-6xl mb-10">Contact</h3>
-        <p class="lg:mt-15 sm:pl-20 mt-2 text-2xl animate-pulse" (click)="redirectLinkdn()">
+        <p class="lg:mt-15 sm:pl-20 mt-2 text-5xl animate-pulse" (click)="redirectLinkdn()">
             <i class="cursor-pointer fa-brands fa-linkedin"></i>
         </p>
         <p class="sm:pl-20 sm:pt-5 sm:text-2xl animate-pulse"> 
+            Follow me!
+        </p>
+        <p class="sm:pl-20 sm:pt-5 sm:text-2xl animate-pulse"> 
             leonardogurgi@gmail.com
+        </p>
+        <p class="sm:pl-20 sm:pt-5 sm:text-2xl animate-bounce"> 
+            Thanks!
         </p>
     </div>
 </section>
