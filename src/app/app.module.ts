@@ -6,6 +6,8 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { BackgroundSectionComponent } from './components/background-section/background-section.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AiApproachComponent } from './components/ai-approach/ai-approach.component';
+import { RevealDirective } from './directives/reveal.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MenuComponent,
     HomeComponent,
     BackgroundSectionComponent,
-    FooterComponent
+    FooterComponent,
+    AiApproachComponent,
+    RevealDirective
   ],
   imports: [
     BrowserModule,

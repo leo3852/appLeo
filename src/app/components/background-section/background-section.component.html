@@ -1,226 +1,130 @@
-<div class="mt-10 flex flex-col justify-center items-center">
-    <div class=" md:w-4/6  text-white px-6 py-12">
-        <h2 class="text-2xl text-yellow-300 mb-10 hover:animate-pulse">Independent projects</h2>
-        
-        <div class="mb-16 border border-gray-700 rounded-lg bg-gray-900 overflow-hidden" style="box-shadow: 0 0 15px 5px rgba(255, 0, 106, 0.7);">
-          <div class="flex flex-col md:flex-row">
-            <!-- Image Section -->
-            <div class="md:w-1/2 relative">
-              <img 
-                src="assets/reni.jpg" 
-                alt="Reni Portfolio Preview" 
-                class="w-full h-64 md:h-full object-cover"
-              />
-              <!-- Translucent Overlay -->
-              <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-            </div>
-            
-            <!-- Content Section -->
-            <div class="md:w-1/2 p-6 space-y-4">
-              <div class="text-sm text-gray-400">2025 - August</div>
-              <h3 class="text-2xl font-bold text-white">Reni Boediarti</h3>
-              <p class="text-gray-300">
-                Portfolio website for a Media Journalist from Indonesia, built with the latest technologies and is fully responsive and SEO optimized. Tha main goal was to create a website that is easy to navigate showing her most valuable work having a modern and clean design.  
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span class="badge">TypeScript</span>
-                <span class="badge">Angular 19</span>
-                <span class="badge">SCSS</span>
-                <span class="badge">TailwindCSS</span>
-              </div>       
-              <div class="animate-pulse">
-                <a 
-                  href="https://leo3852.github.io/reniboediarti/#home" 
-                  target="_blank"
-                  class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-                >
-                  🌐 View Live Project
-                </a>
-              </div>
-            </div>
+<div class="mx-auto w-11/12 max-w-4xl md:w-4/6">
+
+  <!-- ============ Experience ============ -->
+  <section id="experience" class="scroll-mt-16 pb-28">
+    <p class="section-label mb-3">{{ lang.t(ui.experienceLabel) }}</p>
+    <h2 class="section-title mb-14 text-white">{{ lang.t(ui.experienceTitle) }}</h2>
+
+    <ol class="timeline">
+      <li
+        *ngFor="let exp of experiences; let i = index"
+        class="timeline-item"
+        [class.is-current]="exp.current"
+        appReveal
+        [revealDelay]="i * 70"
+      >
+        <div class="card p-6 md:p-7">
+
+          <div class="mb-3 flex flex-wrap items-center gap-3">
+            <span class="text-xs tracking-wide text-zinc-500">{{ lang.t(exp.period) }}</span>
+            <span *ngIf="exp.current" class="present-pill">{{ lang.t(ui.present) }}</span>
           </div>
+
+          <h3 class="company-name text-white">{{ exp.company }}</h3>
+          <p class="mt-1 text-sm text-cyan-300">{{ lang.t(exp.role) }}</p>
+
+          <p class="mt-4 leading-relaxed">{{ lang.t(exp.summary) }}</p>
+
+          <ul *ngIf="exp.highlights?.length" class="mt-4 space-y-2">
+            <li *ngFor="let item of exp.highlights" class="flex gap-3 text-sm leading-relaxed">
+              <span class="mt-2 h-px w-3 shrink-0 bg-cyan-400/50"></span>
+              <span>{{ lang.t(item) }}</span>
+            </li>
+          </ul>
+
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="badge" *ngFor="let tech of exp.stack">{{ tech }}</span>
+          </div>
+
+          <a
+            *ngIf="exp.link"
+            [href]="exp.link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-cta mt-6"
+          >
+            {{ lang.t(exp.link.label) }}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+
         </div>
-        <!-- Graph Creator -->
-        <div class="space-y-6 mb-16 p-6 border border-gray-700 rounded-lg bg-gray-900" style="box-shadow: 0 0 15px 5px rgba(255, 0, 106, 0.7);">
-          <div class="text-sm text-gray-400">2025 June</div>
-          <h3 class="text-2xl font-bold text-white">Graph Creator</h3>
-          <p class="text-gray-300">
-            I developed an Angular-based application designed to assist teachers, physical education teachers in Latin America create and visualize different types of graphs — linear, polynomial, and exponential and mathematically calculate the corresponding equation. The tool aims to simplify data interpretation and support teaching. Translated to English, Portuguese and Spanish to reach a broader audience and make it a valuable educational resource for both teachers and students.
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ AI + Experience ============ -->
+  <app-ai-approach></app-ai-approach>
+
+  <!-- ============ Projects ============ -->
+  <section id="projects" class="scroll-mt-16 pb-24">
+    <p class="section-label mb-3">{{ lang.t(ui.projectsLabel) }}</p>
+    <h2 class="section-title mb-4 text-white">{{ lang.t(ui.projectsTitle) }}</h2>
+    <p class="mb-12 max-w-2xl text-sm leading-relaxed text-zinc-500">{{ lang.t(ui.projectsIntro) }}</p>
+
+    <div class="grid items-start gap-6 md:grid-cols-2">
+      <article
+        *ngFor="let project of projects; let i = index"
+        class="card flex flex-col overflow-hidden"
+        [ngClass]="{ 'md:col-span-2': project.image }"
+        appReveal
+        [revealDelay]="i * 70"
+      >
+        <img
+          *ngIf="project.image"
+          [src]="project.image"
+          [alt]="project.title + ' ' + lang.t(ui.previewAlt)"
+          class="h-48 w-full object-cover object-top md:h-56"
+        />
+
+        <div class="flex flex-1 flex-col p-6">
+          <span class="text-xs tracking-wide text-zinc-500">{{ lang.t(project.period) }}</span>
+          <h3 class="project-title mt-2 text-white">{{ project.title }}</h3>
+
+          <p class="mt-3 text-sm leading-relaxed">{{ lang.t(project.summary) }}</p>
+
+          <p
+            *ngIf="project.note"
+            class="mt-4 rounded-md border border-white/5 bg-white/5 px-3 py-2 text-xs text-zinc-400"
+          >
+            {{ lang.t(project.note) }}
           </p>
-          <div class="flex flex-wrap gap-2 mt-3">
-            <span class="badge">TypeScript</span>
-            <span class="badge">Angular 19</span>
-            <span class="badge">SCSS</span>
-            <span class="badge">TailwindCSS</span>
-            <span class="badge">Chart.js</span>
-          </div>       
-          <div class="mt-5 animate-pulse">
-            <a 
-              href="https://leo3852.github.io/graphCalc/" 
-              target="_blank"
-              class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-            >
-              🌐 View Live Project
-            </a>
-          </div>
-        </div>
 
-        <div class="space-y-6 mb-16 p-6 border border-gray-700 rounded-lg bg-gray-900" style="box-shadow: 0 0 15px 5px rgba(255, 0, 106, 0.7);">
-          <div class="text-sm text-gray-400">2025</div>
-          <h3 class="text-2xl font-bold text-white">Finances Manager</h3>
-          <p class="text-gray-300">
-            While living abroad and focusing on my studies, I built a full-stack application to stay current with industry practices and sharpen my skills in .NET, SQL Server, and Angular. It was a hands-on way to apply modern development principles and keep my knowledge fresh — and not least, to build a useful tool.
-          </p>
-          <p class="font-semibold text-gray-300">Test User: <code class="bg-gray-800 px-1 rounded">test@test.com</code> | Password: <code class="bg-gray-800 px-1 rounded">test123</code></p>
-          <div class="flex flex-wrap gap-2 mt-3">
-            <span class="badge">TypeScript</span>
-            <span class="badge">Angular 19</span>
-            <span class="badge">SCSS</span>
-            <span class="badge">TailwindCSS</span>
-            <span class="badge">C#</span>
-            <span class="badge">ASP.NET</span>
-            <span class="badge">SQL Server</span>
-            <span class="badge">APIRest</span>
+          <div class="mt-5 flex flex-wrap gap-2">
+            <span class="badge" *ngFor="let tech of project.stack">{{ tech }}</span>
           </div>
-          
-          <div class="mt-5 animate-pulse">
-            <a 
-              href="https://leo3852.github.io/expenses-manager-frontend/" 
-              target="_blank"
-              class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-            >
-              🌐 View Live Project
-            </a>
-          </div>
-        </div>
-        
 
-        <h2 class="text-2xl text-yellow-300 mb-10 hover:animate-pulse">Background & More</h2>
-        
-        <div class="space-y-12">     
-          
-          <!-- Experience Block -->
-          <div class="space-y-6 p-6 border border-gray-700 rounded-lg bg-gray-900  transition duration-300 ease-in-out" style="box-shadow: 0 0 15px 7px rgba(255, 0, 106, 0.3);">
-            
-            <div class="text-sm text-gray-400">01/04/2021 — 31/03/2023 (2 yr)</div>
-            
-            <h3 class="text-2xl font-bold text-white mt-1">Dominion Capital Strategies</h3>
-            
-            <p class="mt-2 text-gray-300">
-              During my tenure as a Full-Stack .NET Developer, I contributed to various aspects of the company’s operations. From launching new processes to maintaining existing ones, I delivered both minor and major features that supported and improved daily business functionality.
-            </p>
-            
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="badge">TypeScript</span>
-              <span class="badge">Angular</span>
-              <span class="badge">SCSS</span>
-              <span class="badge">TailwindCSS</span>
-              <span class="badge">C#</span>
-              <span class="badge">ASP.NET</span>
-              <span class="badge">SQL Server</span>
-              <span class="badge">Azure DevOps</span>
-              <span class="badge">Docker</span>
-              <span class="badge">RabbitMQ</span>
-              <span class="badge">APIRest</span>
-            </div>
-            
-              <div class="mt-5 animate-pulse">
-                <a 
-                  href="https://dominion-cs.com/en" 
-                  target="_blank"
-                  class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-                >
-                  🌐 Visit Company Site
-                </a>
-              </div>
-              
-          </div>
-      
-          <!-- Repeat this block for each experience entry -->
-          <div class="space-y-6 p-6 border border-gray-700 rounded-lg bg-gray-900 transition duration-300 ease-in-out" style="box-shadow: 0 0 15px 7px rgba(255, 0, 106, 0.3);">
-            <div class="text-sm text-gray-400">22/06/2020 — 26/03/2021</div>
-            <h3 class="text-2xl font-bold text-white mt-1">Porto Servicios</h3>
-            <p class="mt-2 text-gray-300">
-              As a Full-Stack .NET Developer, I led the modernization of the company’s system by integrating a RESTful API and migrating to a new framework. This significantly improved performance and enhanced the overall user experience.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="badge">Angular</span>
-              <span class="badge">Bootstrap</span>
-              <span class="badge">JavaScript</span>
-              <span class="badge">C#</span>
-              <span class="badge">ASP.NET</span>
-              <span class="badge">SQL Server</span>
-              <span class="badge">Azure DevOps</span>
-            </div>
-            <div class="mt-5 animate-pulse">
-              <a 
-                href="https://www.portoservicios.com.uy/" 
-                target="_blank"
-                class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-              >
-                🌐 Visit Company Site
-              </a>
-            </div>
-          </div>
-          
-      
-          <!-- Middlesoft -->
-          <div class="space-y-6 p-6 border border-gray-700 rounded-lg bg-gray-900  transition duration-300 ease-in-out" style="box-shadow: 0 0 15px 7px rgba(255, 0, 106, 0.3);">
-            <div class="text-sm text-gray-400">21/10/2019 — 12/06/2020</div>
-            <h3 class="text-2xl font-bold text-white mt-1">Middlesoft</h3>
-            <p class="mt-2 text-gray-300">
-              In a fast-paced software factory environment, I worked as a .NET developer with a strong focus on front-end tasks. I adapted quickly to diverse projects, using a variety of modern and legacy technologies to deliver quality solutions under tight deadlines.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="badge">TypeScript</span>
-              <span class="badge">React</span>
-              <span class="badge">jQuery</span>
-              <span class="badge">HTML/CSS</span>
-              <span class="badge">Bootstrap</span>
-              <span class="badge">C#</span>
-              <span class="badge">.NET Core</span>
-              <span class="badge">Azure</span>
-            </div>
-            <div classs="mt-5 animate-pulse">
-              <a 
-                href="https://www.middlesoft.com.uy/" 
-                target="_blank"
-                class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-              >
-                🌐 Visit Company Site
-              </a>
-            </div>
-          </div>
-          
-          <!-- Wunderman -->
-          <div class="space-y-6 p-6 border border-gray-700 rounded-lg bg-gray-900 transition duration-300 ease-in-out" style="box-shadow: 0 0 15px 7px rgba(255, 0, 106, 0.3);">
-            <div class="text-sm text-gray-400">01/04/2019 — 21/10/2019</div>
-            <h3 class="text-2xl font-bold text-white mt-1">Wunderman</h3>
-            <p class="mt-2 text-gray-300">
-              As a Front-End Developer, I delivered performant web apps using agile methodologies. My responsibilities included building responsive interfaces, ensuring pixel-perfect design fidelity, and collaborating across teams on multi-platform solutions.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <span class="badge">Vue</span>
-              <span class="badge">Angular</span>
-              <span class="badge">HTML/CSS</span>
-              <span class="badge">SCSS</span>
-              <span class="badge">jQuery</span>
-              <span class="badge">Bootstrap</span>
-              <span class="badge">Jira</span>
-            </div>
-            <div class="mt-5 animate-pulse">
-              <a 
-                href="https://vml.com/uruguay" 
-                target="_blank"
-                class="inline-block px-5 py-3 bg-blue-800 text-white font-semibold rounded-full shadow hover:bg-blue-700 transition"
-              >
-                🌐 Visit Company Site
-              </a>
-            </div>
-          </div>
-          
-
+          <a
+            *ngIf="project.link"
+            [href]="project.link.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-cta mt-6 self-start"
+          >
+            {{ lang.t(project.link.label) }}
+            <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
+      </article>
+
+      <!-- Work that has no link, but still counts -->
+      <div class="card card-muted flex gap-4 p-6 md:col-span-2" appReveal>
+        <svg
+          class="mt-0.5 h-4 w-4 flex-none text-zinc-600"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          aria-hidden="true"
+        >
+          <rect x="4" y="10" width="16" height="10" rx="2" />
+          <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+        </svg>
+        <div>
+          <h3 class="project-title text-zinc-300">{{ lang.t(ui.privateTitle) }}</h3>
+          <p class="mt-2 text-sm leading-relaxed">{{ lang.t(ui.privateBody) }}</p>
+        </div>
+      </div>
     </div>
-      
+  </section>
+
 </div>

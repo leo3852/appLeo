@@ -1,0 +1,83 @@
+<section id="approach" class="scroll-mt-16 pb-28">
+  <p class="section-label mb-3">{{ lang.t(ui.aiLabel) }}</p>
+  <h2 class="section-title mb-6 text-white">
+    {{ lang.t(ui.aiTitle1) }}<br />
+    {{ lang.t(ui.aiTitle2) }}
+  </h2>
+
+  <p class="mb-4 max-w-2xl leading-relaxed">{{ lang.t(ui.aiP1) }}</p>
+
+  <p class="mb-10 max-w-2xl leading-relaxed">{{ lang.t(ui.aiP2) }}</p>
+
+  <div class="card overflow-hidden" appReveal>
+
+    <!-- Tabs -->
+    <div class="flex border-b border-white/5" role="tablist" [attr.aria-label]="lang.t(ui.codeComparison)">
+      <button
+        *ngFor="let tab of tabs"
+        type="button"
+        role="tab"
+        [attr.aria-selected]="activeTab === tab.id"
+        class="tab"
+        [class.is-active]="activeTab === tab.id"
+        (click)="selectTab(tab.id)"
+      >
+        {{ lang.t(tab.label) }}
+      </button>
+    </div>
+
+    <!-- Code -->
+    <div class="code-wrap" role="tabpanel">
+      <div class="code-file">{{ sample.file }}</div>
+
+      <pre class="code"><code><span
+        *ngFor="let line of sample.lines; let i = index"
+        class="code-line"
+        [class.has-note]="line.note"
+        [class.is-lit]="line.note && line.note === activeNote"
+        [class.is-fix]="activeTab === 'shipped'"
+      ><span class="ln">{{ i + 1 }}</span>{{ line.text }}<span
+        *ngIf="line.note"
+        class="marker"
+      >{{ line.note }}</span></span></code></pre>
+    </div>
+
+    <!-- Annotations -->
+    <ul class="notes">
+      <li
+        *ngFor="let note of sample.notes"
+        class="note"
+        [class.is-lit]="note.n === activeNote"
+        [class.is-fix]="activeTab === 'shipped'"
+        (mouseenter)="activeNote = note.n"
+        (mouseleave)="activeNote = null"
+        (focusin)="activeNote = note.n"
+        (focusout)="activeNote = null"
+        tabindex="0"
+      >
+        <span class="note-n">{{ note.n }}</span>
+        <span>
+          <strong class="note-title">{{ lang.t(note.title) }}</strong>
+          <span class="note-body">{{ lang.t(note.body) }}</span>
+        </span>
+      </li>
+    </ul>
+
+  </div>
+
+  <p class="mb-5 mt-10 max-w-2xl leading-relaxed">{{ lang.t(ui.aiPracticesLead) }}</p>
+
+  <div class="grid items-start gap-4 md:grid-cols-3">
+    <div
+      class="card p-5"
+      *ngFor="let practice of practices; let i = index"
+      appReveal
+      [revealDelay]="i * 70"
+    >
+      <strong class="note-title">{{ lang.t(practice.title) }}</strong>
+      <p class="note-body">{{ lang.t(practice.body) }}</p>
+    </div>
+  </div>
+
+  <p class="mt-8 max-w-2xl text-sm leading-relaxed text-zinc-500">{{ lang.t(ui.aiClosing) }}</p>
+</section>

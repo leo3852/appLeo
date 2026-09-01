@@ -1,0 +1,150 @@
+/* --hl is the accent for the active sample: rose for the draft's problems,
+   emerald for the shipped fixes. Children inherit it, so every highlighted
+   line, marker and badge below is written once instead of twice. */
+.code-line,
+.note {
+  --hl: 244, 63, 94;
+}
+
+.code-line.is-fix,
+.note.is-fix {
+  --hl: 52, 211, 153;
+}
+
+/* ---- tabs -------------------------------------------------------------- */
+
+.tab {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  color: var(--text-faint);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+.tab:hover {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--accent-faint);
+}
+
+/* ---- code -------------------------------------------------------------- */
+
+.code-wrap {
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.code-file {
+  padding: 0.6rem 1rem 0;
+  color: var(--text-faint);
+  font-size: 0.6875rem;
+}
+
+.code {
+  margin: 0;
+  padding: 0.5rem 0 1rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  line-height: 1.75;
+  color: #cbd5e1;
+}
+
+.code-line {
+  display: block;
+  padding-right: 1rem;
+  border-left: 2px solid transparent;
+  white-space: pre;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ln {
+  display: inline-block;
+  width: 2.5rem;
+  padding-right: 0.9rem;
+  color: #3f3f46;
+  text-align: right;
+  user-select: none;
+}
+
+.code-line.has-note {
+  background: rgba(var(--hl), 0.06);
+  border-left-color: rgba(var(--hl), 0.4);
+}
+
+.code-line.is-lit {
+  background: rgba(var(--hl), 0.16);
+  border-left-color: rgb(var(--hl));
+}
+
+.marker {
+  display: inline-block;
+  min-width: 1.05rem;
+  margin-left: 0.75rem;
+  border-radius: 9999px;
+  background: rgba(var(--hl), 0.9);
+  color: #0b0b0f;
+  font-size: 0.62rem;
+  line-height: 1.05rem;
+  text-align: center;
+}
+
+/* ---- annotations ------------------------------------------------------- */
+
+.notes {
+  border-top: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+
+.note {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  transition: background 0.2s ease;
+}
+
+.note.is-lit {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.note-n {
+  flex: none;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: 0.15rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(var(--hl), 0.5);
+  color: rgb(var(--hl));
+  font-size: 0.62rem;
+  line-height: 1.05rem;
+  text-align: center;
+}
+
+.note-title {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: var(--text);
+  font-family: 'Montserrat-SemiBold', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: normal;
+}
+
+.note-body {
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab,
+  .code-line,
+  .note {
+    transition: none;
+  }
+}

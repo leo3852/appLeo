@@ -1,10 +1,16 @@
 <canvas #particleCanvas class="particle-canvas"></canvas>
 
-<div>
-    <!-- <app-menu></app-menu> -->
+<div class="lang-toggle" role="group" [attr.aria-label]="lang.t(ui.langLabel)">
+    <button type="button" [class.is-active]="lang.current === 'en'"
+            [attr.aria-pressed]="lang.current === 'en'" (click)="lang.set('en')">EN</button>
+    <span aria-hidden="true">/</span>
+    <button type="button" [class.is-active]="lang.current === 'es'"
+            [attr.aria-pressed]="lang.current === 'es'" (click)="lang.set('es')">ES</button>
+</div>
+
+<div class="page">
     <app-home></app-home>
     <app-background-section></app-background-section>
-    <!-- <app-footer></app-footer> -->
+    <app-footer></app-footer>
     <router-outlet></router-outlet>
-    
 </div>

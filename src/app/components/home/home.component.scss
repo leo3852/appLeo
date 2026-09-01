@@ -1,59 +1,94 @@
-
-.loader {
-    position: relative;
-    width: 300px;
-    height: 10px;
-    background: #fff;
-    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-}
-.loader::before{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,#fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
-    animation: animate 20s linear infinite;
-    background-size: 500%;
-}
-.loader::after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,#fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
-    animation: animate 20s linear infinite;
-    background-size: 500%;
-    filter: blur(20px);
+.hero-name {
+  font-family: 'Montserrat-Bold', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 
-.loader2 {
-    position: relative;
-    width: 300px;
-    height: 10px;
-    background: #fff;
-    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-}
-.loader2::before{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,#fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
-    animation: animate 20s linear infinite;
-    background-size: 800%;
-}
-.loader2::after{
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(90deg,#fb0094, #0000ff, #00ff00, #ffff00, #fb0094, #0000ff, #00ff00, #ffff00, #fb0094);
-    animation: animate 20s linear infinite;
-    background-size: 800%;
-    filter: blur(20px);
+.hero-rule {
+  width: 5rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent);
 }
 
-@keyframes animate {
-    0%{
-        background-position: 0 0;
-    }
-    0%{
-        background-position: 500% 0;
-    }
+/* ---- "AI Tooling" shimmer --------------------------------------------- */
+
+.ai-tooling {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.ai-shimmer {
+  background: linear-gradient(
+    100deg,
+    #22d3ee 0%,
+    #22d3ee 30%,
+    #a78bfa 45%,
+    #f0abfc 52%,
+    #22d3ee 68%,
+    #22d3ee 100%
+  );
+  background-size: 250% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.35));
+  animation: ai-shimmer 6s ease-in-out infinite;
+}
+
+.ai-sparkle {
+  color: #a5f3fc;
+  font-size: 0.7em;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px rgba(103, 232, 249, 0.8));
+  animation: ai-sparkle 6s ease-in-out infinite;
+}
+
+@keyframes ai-shimmer {
+  0%,
+  100% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes ai-sparkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.9) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(90deg);
+  }
+}
+
+/* Keep the text readable if background-clip: text isn't supported. */
+@supports not ((-webkit-background-clip: text) or (background-clip: text)) {
+  .ai-shimmer {
+    color: #67e8f9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-shimmer,
+  .ai-sparkle {
+    animation: none;
+  }
+
+  .ai-shimmer {
+    background-position: 50% 50%;
+  }
+}
+
+/* Emphasis inside the bio arrives via [innerHTML], so it carries no classes. */
+.bio strong {
+  color: #e4e4e7;
+  font-weight: normal;
 }

@@ -8,8 +8,38 @@
   z-index: 0;
 }
 
-div {
+.page {
   position: relative;
   z-index: 1;
 }
 
+.lang-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  background: rgba(20, 20, 25, 0.72);
+  backdrop-filter: blur(8px);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.lang-toggle button {
+  color: var(--text-faint);
+  transition: color 0.2s ease;
+}
+
+.lang-toggle button:hover {
+  color: var(--text-muted);
+}
+
+.lang-toggle button.is-active {
+  color: var(--accent);
+}

@@ -3,37 +3,141 @@
 @import "tailwindcss/utilities";
 
 @font-face {
-    font-family: 'Montserrat-Bold'; 
+    font-family: 'Montserrat-Bold';
     src: url('./fonts/Montserrat-Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Montserrat-Regular'; 
+    font-family: 'Montserrat-SemiBold';
+    src: url('./fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Montserrat-Regular';
     src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Montserrat-Thin'; 
+    font-family: 'Montserrat-Thin';
     src: url('./fonts/Montserrat-Thin.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Montserrat-Light'; 
+    font-family: 'Montserrat-Light';
     src: url('./fonts/Montserrat-Light.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Montserrat-ExtraLight'; 
+    font-family: 'Montserrat-ExtraLight';
     src: url('./fonts/Montserrat-ExtraLight.ttf') format('truetype');
 }
 
-body{
-    color: #d1d1d1;
-    background: #1d1d20;
-    font-family: 'Montserrat-Regular';
+:root {
+    --bg: #0b0b0f;
+    --surface: #141419;
+    --surface-raised: #1a1a21;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text: #e7e7ea;
+    --text-muted: #a1a1aa;
+    --text-faint: #71717a;
+    --accent: #22d3ee;
+    --accent-soft: rgba(34, 211, 238, 0.35);
+    --accent-faint: rgba(34, 211, 238, 0.08);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: var(--text-muted);
+    background: var(--bg);
+    font-family: 'Montserrat-Regular', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--accent-soft);
+    color: #fff;
+}
+
+/* ---- shared building blocks ------------------------------------------- */
+
+.section-label {
+    display: inline-block;
+    color: var(--accent);
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-family: 'Montserrat-Bold', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-soft);
+    box-shadow: 0 12px 32px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--accent-faint);
 }
 
 .badge {
-    @apply bg-blue-900 text-white text-xs font-medium px-3 py-1 rounded-full;
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-muted);
+    font-size: 0.6875rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
 }
 
-h1 {
-    font-family: 'Montserrat-Regular', sans-serif;
-    font-size: 50px;
+.link-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text);
+    font-family: 'Montserrat-SemiBold', sans-serif;
+    font-size: 0.8125rem;
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 0.15rem;
+    transition: color 0.25s ease, border-color 0.25s ease, gap 0.25s ease;
+}
+
+.link-cta:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    gap: 0.75rem;
+}
+
+/* ---- scroll reveal ----------------------------------------------------- */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .card {
+        transition: none;
+    }
 }
