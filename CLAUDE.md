@@ -14,14 +14,19 @@ npx ng test --include='**/home.component.spec.ts'     # run one spec file
 npx ng generate component components/<name>           # SCSS is the configured style default
 ```
 
-Deploy targets the `gh-pages` branch (served at `leo3852.github.io/appLeo/`), so the build must be
-made with the subpath base href:
+The repo is named `leo3852.github.io`, so GitHub serves it as a **user site at the root** —
+`https://leo3852.github.io/`, with no subpath. Deploy still targets the `gh-pages` branch:
 
 ```bash
-npx angular-cli-ghpages --dir=dist/app-leo   # after: npx ng build --base-href /appLeo/
+npx ng build                                 # default base href of "/" is correct here
+npx angular-cli-ghpages --dir=dist/app-leo
 ```
 
-`dist/` is gitignored on `main`; the built output lives only on the `gh-pages` branch.
+Do **not** add `--base-href`: it was needed while the repo was `appLeo` and the site lived under
+`/appLeo/`. Passing a subpath now publishes a blank page, since every asset URL would be wrong.
+
+`dist/` is gitignored on `main`; the built output lives only on the `gh-pages` branch. The output
+directory is still `dist/app-leo` (from `angular.json`), which no longer matches the repo name.
 
 ## Architecture
 
