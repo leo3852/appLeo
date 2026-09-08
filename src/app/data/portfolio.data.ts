@@ -176,16 +176,15 @@ export const PROJECTS: Project[] = [
     wide: true,
     summary: {
       en:
-        'A blog on software development and applied AI. The goal is staying current, and writing ' +
-        'turns out to be the best way to get there: preparing an article forces me to understand a ' +
-        'topic properly instead of skimming it, and each piece is assembled from several ' +
-        'up-to-date sources. Researching the next one is itself the learning.',
+        'A blog on software development and applied AI. It comes from something concrete: staying ' +
+        'current. Each piece is put together from several very up-to-date sources, and that ' +
+        'research ends up being the learning, because publishing on a topic means understanding ' +
+        'it first.',
       es:
-        'Un blog sobre desarrollo de software e inteligencia artificial aplicada. El objetivo es ' +
-        'mantenerme actualizado, y escribir resultó ser la mejor forma de lograrlo: preparar un ' +
-        'artículo me obliga a entender un tema de verdad en vez de pasarle por arriba, y cada nota ' +
-        'se arma a partir de varias fuentes muy actualizadas. Investigar la siguiente es, en sí ' +
-        'mismo, el aprendizaje.'
+        'Un blog sobre desarrollo de software e inteligencia artificial aplicada. Nace de algo ' +
+        'concreto: mantenerme actualizado. Cada nota la armo recopilando información de varias ' +
+        'fuentes muy al día, y esa investigación termina siendo el aprendizaje, porque para ' +
+        'publicar sobre un tema primero tengo que entenderlo.'
     },
     stack: ['Astro', 'Markdown', 'i18n', 'RSS'],
     link: { url: 'https://contextoycodigo.is-a.dev/', label: READ_BLOG }
