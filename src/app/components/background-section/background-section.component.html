@@ -65,7 +65,7 @@
       <article
         *ngFor="let project of projects; let i = index"
         class="card flex flex-col overflow-hidden"
-        [ngClass]="{ 'md:col-span-2': project.image }"
+        [ngClass]="{ 'md:col-span-2': project.image || project.wide }"
         appReveal
         [revealDelay]="i * 70"
       >

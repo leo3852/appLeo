@@ -23,6 +23,8 @@ export interface Project {
   summary: I18nText;
   note?: I18nText;
   image?: string;
+  /** Give the card the full row even without an image. */
+  wide?: boolean;
   stack: string[];
   link?: Link;
 }
@@ -35,6 +37,11 @@ const VISIT_COMPANY: I18nText = {
 const VIEW_PROJECT: I18nText = {
   en: 'View live project',
   es: 'Ver proyecto'
+};
+
+const READ_BLOG: I18nText = {
+  en: 'Read the blog',
+  es: 'Leer el blog'
 };
 
 export const EXPERIENCES: Experience[] = [
@@ -163,6 +170,26 @@ export const EXPERIENCES: Experience[] = [
 ];
 
 export const PROJECTS: Project[] = [
+  {
+    title: 'Contexto y Código',
+    period: { en: '2026 — Ongoing', es: '2026 — En curso' },
+    wide: true,
+    summary: {
+      en:
+        'A blog on software development and applied AI. The goal is staying current, and writing ' +
+        'turns out to be the best way to get there: preparing an article forces me to understand a ' +
+        'topic properly instead of skimming it, and each piece is assembled from several ' +
+        'up-to-date sources. Researching the next one is itself the learning.',
+      es:
+        'Un blog sobre desarrollo de software e inteligencia artificial aplicada. El objetivo es ' +
+        'mantenerme actualizado, y escribir resultó ser la mejor forma de lograrlo: preparar un ' +
+        'artículo me obliga a entender un tema de verdad en vez de pasarle por arriba, y cada nota ' +
+        'se arma a partir de varias fuentes muy actualizadas. Investigar la siguiente es, en sí ' +
+        'mismo, el aprendizaje.'
+    },
+    stack: ['Astro', 'Markdown', 'i18n', 'RSS'],
+    link: { url: 'https://contextoycodigo.is-a.dev/', label: READ_BLOG }
+  },
   {
     title: 'Reni Boediarti',
     period: { en: '2025 — August', es: '2025 — Agosto' },
