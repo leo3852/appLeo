@@ -73,7 +73,9 @@
           *ngIf="project.image"
           [src]="project.image"
           [alt]="project.title + ' ' + lang.t(ui.previewAlt)"
-          class="h-48 w-full object-cover object-top md:h-56"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[2/1] w-full object-cover object-top"
         />
 
         <div class="flex flex-1 flex-col p-6">

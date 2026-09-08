@@ -173,7 +173,7 @@ export const PROJECTS: Project[] = [
   {
     title: 'Contexto y Código',
     period: { en: '2026 — Ongoing', es: '2026 — En curso' },
-    wide: true,
+    image: 'assets/imageBlog.jpg',
     summary: {
       en:
         'A blog on software development and applied AI. It comes from something concrete: staying ' +
